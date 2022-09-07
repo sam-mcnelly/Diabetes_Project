@@ -1,0 +1,36 @@
+---
+title: "Diabetes Project Analysis Code"
+author: "Sam McNelly"
+date: "2022-09-07"
+output: html_document
+---
+
+open packages and libraries
+```{r}
+library(readr)
+
+#Import data from github 
+diabetes<-read_csv("https://raw.githubusercontent.com/sam-mcnelly/Diabetes_Project/main/DiabetesAtlasData.csv")
+
+```
+
+
+```{r}
+library(dplyr)
+library(tidyverse)
+```
+
+```{r}
+#check the code below later, didn't work 
+Diabetes<-Diabetes %>%
+  slice_max(`Diagnosed Diabetes Percentage`)
+print(Diabetes)
+
+#try this instead
+Diabetes %>% arrange(desc(Diabetes$`Diagnosed Diabetes Percentage))
+
+#or not. try this:
+max(Diabetes$`Diagnosed Diabetes Percentage`, na.rm=TRUE)
+
+```
+
